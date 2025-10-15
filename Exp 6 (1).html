@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html;
+charset=UTF-8" pageEncoding="UTF-8"%>
+<html>
+<head>
+<title>JSP Implicit Objects Demo</title>
+</head>
+<body>
+<h2>Demonstration of JSP Implicit Objects</h2>
+<p><b>Client IP:</b> <%= request.getRemoteAddr()
+%></p>
+<p><b>Server Name:</b> <%= request.getServerName()
+%></p>
+<p><b>Session ID:</b> <%= session.getId() %></p>
+<p><b>Servlet Context:</b> <%=
+application.getServerInfo() %></p>
+<p><b>Parameter from request (exampleparam):</b>
+<%= request.getParameter("exampleparam") %></p>
+<% // Using 'out' implicit object %>
+<% out.println("<p>This line printed using the
+<b>out</b> object.</p>"); %>
+</body>
+</html>

@@ -1,0 +1,142 @@
+HTML: index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Dynamic Navigation Example</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+<h1>Welcome to Vidyavardhini's College</h1>
+<nav>
+<ul>
+<li><a href="#" data-page="home">Home</a></li>
+<li><a href="#" data-page="about">About</a></li>
+<li><a href="#" data-page="contact">Contact</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section id="content">
+<h2>Welcome To Vidyavardhani's college of Engineering!</h2>
+<p>This is the home page content.</p>
+<button onclick="showMessage()">Click Me</button>
+<p id="message"></p>
+</section>
+</main>
+<footer>
+</footer>
+<p>© 2025 FullStackJavaSyllusSetter</p>
+<script src="script.js"></script>
+</body>
+</html>
+∙ Style.css
+body {
+margin: 0;
+padding: 0;
+background-color: #f9f9f9;
+color: #333;
+line-height: 1.6;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+header {
+background-color: #FFA500;
+color: white;
+padding: 25px 20px;
+text-align: center;
+box-shadow: 0 4px 6px rgba(0, 122, 204, 0.3);
+}
+nav ul {
+list-style: none;
+padding: 0;
+display: flex;
+justify-content: center;
+margin: 15px 0 20px;
+gap: 30px;
+}
+nav a {
+color: white;
+text-decoration: none;
+font-weight: 600;
+font-size: 1.1rem;
+padding: 6px 12px;
+border-radius: 4px;
+transition: background-color 0.3s ease;
+}
+nav a:hover {
+background-color: rgba(255, 255, 255, 0.2);
+}
+main {
+padding: 30px 20px;
+text-align: center;
+max-width: 700px;
+margin: 0 auto;
+background: white;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+button {
+padding: 12px 28px;
+font-size: 17px;
+cursor: pointer;
+background-color: red;
+color:white;
+border: none;
+border-radius: 6px;
+box-shadow: 0 3px 6px rgba(0, 122, 204, 0.4);
+transition: background-color 0.3s ease, box-shadow 0.3s ease;
+margin-top: 20px;
+}
+button:hover {
+background-color: #a3005a;
+box-shadow: 0 6px 12px rgba(0, 95, 163, 0.6);
+}
+footer {
+background-color: #eee;
+text-align: center;
+padding: 20px 15px;
+margin-top: 50px;
+font-size: 0.9rem;
+color: #555;
+letter-spacing: 0.02em;
+}
+∙ Java Script: script.js
+const pageContent = {
+home: `
+<h2>Welcome!</h2>
+<p>This is the home page content.</p>
+<button onclick="showMessage()">Click Me</button>
+<p id="message"></p>
+`,
+about: `
+<h2>An Engineering College</h2>
+<p>Here is some information about us.</p>
+<button onclick="showMessage()">Click Me</button>
+<p id="message"></p>
+`,
+contact: `
+<h2>Contact</h2>
+<p>Contact us at example@example.com.</p>
+<button onclick="showMessage()">Click Me</button>
+<p id="message"></p>
+`
+};
+function loadContent(page) {
+const contentDiv = document.getElementById('content');
+contentDiv.innerHTML = pageContent[page] || '<h2>Page not found</h2>';
+}
+document.querySelectorAll('nav a').forEach(link => {
+link.addEventListener('click', event => {
+event.preventDefault();
+const page = event.target.getAttribute('data-page');
+loadContent(page);
+});
+});
+function showMessage() {
+const messagePara = document.getElementById('message');
+if (messagePara) {
+messagePara.textContent = 'You clicked the button! Welcome aboard.';
+}
+}

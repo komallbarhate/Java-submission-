@@ -1,0 +1,28 @@
+index.html
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Auto Background Color Change</title>
+<style>
+body {
+transition: background-color 1s ease;
+color: white;
+font-family: Arial, sans-serif;
+text-align: center;
+padding-top: 100px;
+}
+</style>
+</head>
+<body>
+<h1>Watch the Background Color Change Every 5 Seconds</h1>
+<script>
+const colors = ["#3498db", "#e74c3c", "#2ecc71", "#f39c12", "#9b59b6"];
+let index = 0;
+setInterval(() => {
+document.body.style.backgroundColor = colors[index];
+index = (index + 1) % colors.length;
+}, 5000);
+</script>
+</body>
+</html>
